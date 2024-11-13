@@ -1,18 +1,10 @@
-def combine_anagrams(words_array):
-    a = []  # список сумм ASCII
-    c = dict()
-    for i in words_array:
-        a.append(sum([ord(j) for j in i]))
-    x = 0
-    for i in a:
-        try:
-            c[i]
-        except KeyError:
-            c[i] = [words_array[x]]
-            x += 1
-        else:
-            c[i].append(words_array[x])
-            x += 1
+def combine_anagrams(words_array: list):
+    a = {''.join(sorted(i)): [] for i in words_array}
+    b = [''.join(sorted(i)) for i in words_array]
+    for i in range(len(words_array)):
+        a[b[i]].append(words_array[i])
+    return (list(a.values()))
 
-    b = list(i for i in c.values())
-    print(b)
+
+words = ["cars", "for", "potatoes", "racs", "four", "scar", "creams", "scream"]
+print(combine_anagrams(words))  # => [["cars", "racs", "scar"], ["four"], ["for"], ["potatoes"], ["creams", "scream"]]
