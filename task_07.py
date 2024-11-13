@@ -5,6 +5,3 @@ def combine_anagrams(words_array: list):
         a[b[i]].append(words_array[i])
     return (list(a.values()))
 
-
-words = ["cars", "for", "potatoes", "racs", "four", "scar", "creams", "scream"]
-print(combine_anagrams(words))  # => [["cars", "racs", "scar"], ["four"], ["for"], ["potatoes"], ["creams", "scream"]]
