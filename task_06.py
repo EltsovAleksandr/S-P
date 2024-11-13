@@ -3,9 +3,10 @@ l = ['R', 'P', 'S']  # P - бумага, S - ножницы, R - камень
 
 def rps_game_winner(a):
     if len(a) != 2:
-        raise Exception('WrongNumberOfPlayersError')
+        return ('WrongNumberOfPlayersError')
     elif a[0][1] not in l or a[1][1] not in l:
-        raise Exception('NoSuchStrategyError')
+        # raise Exception('NoSuchStrategyError')
+        return 'NoSuchStrategyError'
     elif a[0][1] == a[1][1]:
         return f'{a[0][0]} {a[0][1]}'
     elif a[0][1].upper() == 'P':  # первый игрок бумага
@@ -21,3 +22,9 @@ def rps_game_winner(a):
         if a[1][1].upper() == 'P':  # второй игрок бумага
             return f'{a[1][0]} {a[1][1]}'
         return f'{a[0][0]} {a[0][1]}'
+
+
+rps_game_winner([['player1', 'P'], ['player2', 'S'], ['player3', 'S']])  # => WrongNumberOfPlayersError
+rps_game_winner([['player1', 'P'], ['player2', 'A']])  # => NoSuchStrategyError
+rps_game_winner([['player1', 'P'], ['player2', 'S']])  # => 'player2 S'
+rps_game_winner([['player1', 'P'], ['player2', 'P']])  # => 'player1 P'
